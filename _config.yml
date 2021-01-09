@@ -1,16 +1,16 @@
 #-------------------------------
 # General Site Settings
 
-title: Pau Cabral | Blog
-description: Galada is an easy and simple theme for Jekyll. Dark colors, give it a special exquisite look. A careful approach to design and features make it an ideal solution for a personal blog. # this means to ignore newlines until "baseurl:"
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "https://paucabral.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+title: jpcabral-tip | Portfolio
+description: Portfolio for CPE 232 - Managing Enterprise Servers # this means to ignore newlines until "baseurl:"
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://jpcabral-tip.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #-------------------------------
 # About Section
-author-name:   Pau Cabral
-author-avatar: placeholder-icon.png
+author-name:   Jose Paulo Cabral
+author-avatar: me.png
 
 
 #-------------------------------
