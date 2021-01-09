@@ -1,0 +1,28 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="footer-top">
+          <h2 class="logo-title">
+            <a href="https://paucabral.github.io" class="logo-text" style="font-family: sans-serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0px;">Pau <span style="font-family: sans-serif; color: #0abdc6; font-weight: 1000;">Cabral</span></a>
+          </h2>
+          <div class="top"><i class="ion ion-ios-arrow-up"></i></div>
+        </div>
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>&copy; {{site.time | date: '%Y'}} All rights reserved.
+          </div>
+          <div class="footer-social">
+            <ul class="list-reset">
+              {% if site.facebook %}
+              <li><a href="{{ site.facebook }}">Facebook</a></li>
+              {% else %} {% endif %}
+
+              <li><a href="https://github.com/jpcabral-tip/">Github</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> <!-- /.footer -->
