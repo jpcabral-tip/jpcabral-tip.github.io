@@ -1,0 +1,92 @@
+---
+layout: post
+title:  "Quiz 2.1: Ansible"
+date:   2021-01-11 1:00:00 +0300
+image:  hands-on-act-2-banner.jpg
+tags:   [Prelim, Quiz]
+---
+## Tasks
+
+1. Fork this repository https://github.com/ajcanlas-tip/sysad2-12021.git
+2. Create a branch for your development
+3. Create a directory with your student number
+4. Create a file named "README.md", and the content in "README.md" is a Markdown version of your info.
+5. Then create a Pull request and put your forked repo in the only question of this quiz (Note answer this quiz as well as create a pull request)
+
+***
+
+## Output
+
+> 1811023/quiz21/README.md
+# Ansible Basics
+The following steps show how to create a baisc Ansible configuration and inventory file, as well as basic execution of Ansible commands through ad-hoc. This assumes Ansible has already been installed on the host machine, and a dedicated working directory has been created. Target hosts/VMs are also expected to be configured with proper SSH authentication and assumes that the public key from the host machine has been appended on the authorized_keys of the target machines.
+
+## Creating an Ansible Configuration file
+1. Inside the preferred working directory, create the ansible.cfg file using the touch command.
+	```
+	root@localhost:~# touch ansible.cfg
+	```
+2. This will be the configuration file which will be supplied with basic configuration. Open the configuration file using vim and enter the "INSERT" mode by pressing the "I" key (or using any text-editor of your choice).
+	```
+	root@localhost:~# vim ansible.cfg
+	```
+3. The configuration file will be loaded with basic information such as the location of the inventory file (which will be created on the next section, assuming that the inventory file is created on the same directory and named as "inventory"), the remote user to be used (the created user on remote/target machines to SSH), and the host verification or authentication (in this case, authentication is done passwordless through SSH key pair and the private key is copied on the working directory). Also, since this is another instance of the configuration file (Ansible checks per-directory for configuration file), other default values must be indicated.
+	```
+	[defaults]
+	
+	#Basic Configuration
+	inventory = ./inventory
+	remote_user = <YOUR_SSH_USER>
+	private_key_file = ./private.key
+	```
+4. Save the file by pressing "Esc" and typing ``:wq!`` to exit after saving.
+
+## Creating an Ansible Inventory file
+1. Create a file to store the IP Addresses of target machines or hosts. In this case, the file will be called "inventory".
+	```
+	root@localhost:~# touch inventory
+	```
+2.  Edit the file using using vim and enter the "INSERT" mode by pressing the "I" key (or using any text-editor of your choice).
+	```
+	root@localhost:~# vim inventory
+	```
+3.  Inside the configuration file, type the IP address/es of the target host/s.
+	```
+	192.168.254.69
+	192.168.254.15
+	192.168.254.20
+	```
+4.  IP addresses can also be grouped accordingly. The name of the group can be specified by placing it inside a set of square brackets (in this example, the group names used are "ubuntu" and "backend").
+	```
+	[ubuntu]
+	192.168.254.69
+	
+	[backend]
+	192.168.254.15
+	192.168.254.20
+	```
+5. Save the file by pressing "Esc" and typing ``:wq!`` to exit after saving.
+
+## Executing Ansible commands through Ad-hoc
+1. Ad-hoc commands can be executed using the command ``ansible <target host/group> -m <module> -a "<arguments>"``. Modules and their respective parameters or arguments can be found on Ansible's documentation page. The target host can be a group, specific IP, or all the IP addresses declared on the inventory file. Some modules may not require arguments in order to function (ex. ping module, see below for example use case).
+	```
+	root@localhost:~# ansible all -m ping
+	```
+2. In this example, the target host is the sole "ubuntu" IP address declared on the inventory file which will be passed through with the setup module to display minimum amount of facts.
+	```
+	root@localhost:~# ansible ubuntu -m setup -a "gather_subset=!all"
+	```
+3. The following example shows the use case of the shell module, targetting the "backend" hosts. The shell module takes shell commands as arguments.
+	```
+	root@localhost:~# ansible backend -m shell -a "whoami"
+	```
+	```
+	root@localhost:~# ansible backend -m shell -a "hostname"
+	```
+	```
+	root@localhost:~# ansible backend -m shell -a "ip addr"
+	```
+{% endhighlight %}
+
+
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz21">Github</a>.</p>
