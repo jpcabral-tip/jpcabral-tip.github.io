@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hands-on Activity 1: Install and configure your repository in Local Git"
-date:   2021-01-10 22:00:00 +0300
+date:   2021-01-10 22:03:00 +0300
 image:  hands-on-act-1-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
@@ -11,7 +11,7 @@ Create a git repository locally and emphasize the use of Git in your local proje
 
 ## Output
 
-1. Install bash and vim.
+Install bash and vim.
 
 {% highlight bash %}
 localhost:~# apk add bash
@@ -20,7 +20,7 @@ localhost:~# apk add vim
 
 ![]({{site.baseurl}}/img/hands-on-1-1.png)
 
-2. Install git.
+Install git.
 
 {% highlight bash %}
 localhost:~# apk add git
@@ -28,7 +28,7 @@ localhost:~# apk add git
 
 ![]({{site.baseurl}}/img/hands-on-1-2.png)
 
-3. Create activity1 directory.
+Create activity1 directory.
 
 {% highlight bash %}
 localhost:~# mkdir activity1
@@ -36,7 +36,7 @@ localhost:~# mkdir activity1
 
 ![]({{site.baseurl}}/img/hands-on-1-3.png)
 
-4. Initialize activity1 as git repository.
+Initialize activity1 as git repository.
 
 {% highlight bash %}
 localhost:~# cd activity1/
@@ -45,7 +45,7 @@ localhost:~/activity1# git init
 
 ![]({{site.baseurl}}/img/hands-on-1-4.png)
 
-5. Created and added README.md.
+Created and added README.md.
 
 {% highlight bash %}
 localhost:~/activity1# git add README.md
@@ -53,7 +53,7 @@ localhost:~/activity1# git add README.md
 
 ![]({{site.baseurl}}/img/hands-on-1-5.png)
 
-6. Commit README.md on the master branch.
+Commit README.md on the master branch.
 
 {% highlight bash %}
 localhost:~/activity1# git commit -m "First Commit"
