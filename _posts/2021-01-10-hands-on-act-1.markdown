@@ -19,7 +19,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-1-1.png)
 
-
 2. Install git.
 
     {% highlight bash %}
@@ -27,14 +26,12 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-1-2.png)
 
-
 3. Create activity1 directory.
 
     {% highlight bash %}
     localhost:~# mkdir activity1
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-1-3.png)
-
 
 4. Initialize activity1 as git repository.
 
@@ -44,14 +41,12 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-1-4.png)
 
-
 5. Created and added README.md.
 
     {% highlight bash %}
     localhost:~/activity1# git add README.md
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-1-5.png)
-
 
 6. Commit README.md on the master branch.
 

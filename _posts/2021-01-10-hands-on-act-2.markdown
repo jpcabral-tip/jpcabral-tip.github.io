@@ -15,7 +15,6 @@ Create a local directory and link it in a centralized repository in Github.
 
     ![]({{site.baseurl}}/img/hands-on-2-1.png)
 
-
 2. Clone repository.
 
     {% highlight bash %}
@@ -24,14 +23,12 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-2.png)
 
-
 3. Create README.md inside repository.
 
     {% highlight bash %}
     localhost:~/jpcabral-tip# touch README.md
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-3.png)
-
 
 4. Modified README.md.
 
@@ -52,7 +49,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-4.png)
 
-
 5. Commit and push to remote repository.
 
     {% highlight bash %}
@@ -62,11 +58,9 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-5.png)
 
-
 6. Forked https://github.com/ajcanlas-tip/sysad2-12021.git repository.
 
     ![]({{site.baseurl}}/img/hands-on-2-6.png)
-
 
 7. Clone forked repository.
 
@@ -77,7 +71,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-3.png)
 
-
 8. Clone forked repository.
 
     {% highlight bash %}
@@ -87,7 +80,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-7.png)
 
-
 9. Created activity2 branch
 
     {% highlight bash %}
@@ -95,7 +87,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~/sysad2-12021# git branch activity2
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-8.png)
-
 
 10. Switched to activity2 branch
 
@@ -105,14 +96,12 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-9.png)
 
-
 11. Added an upstream repository.
 
     {% highlight bash %}
     localhost:~/sysad2-12021# git remote add upstream https://github.com/ajcanlas-tip/sysad2-12021.git
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-10.png)
-
 
 12. Copy previous README.md as HA2.md.
 
@@ -126,7 +115,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-11.png)
 
-
 13. Push to activity2 branch.
 
     {% highlight bash %}
@@ -136,11 +124,9 @@ Create a local directory and link it in a centralized repository in Github.
     {% endhighlight %}
     ![]({{site.baseurl}}/img/hands-on-2-12.png)
 
-
 14. Open a pull request for the master branch of the upstream with the activity2 branch.
 
     ![]({{site.baseurl}}/img/hands-on-2-13.png)
-
 
 15. The request can be viewed under the 'Pull requests' tab of the upstream repository.
 
