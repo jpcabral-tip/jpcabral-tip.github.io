@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hands-on Prelim Exam"
-date:   2021-01-11 1:30:00 +0300
+date:   2021-01-11 1:50:00 +0300
 image:  prelim-exam.png
 tags:   [Prelim, Exam]
 ---
