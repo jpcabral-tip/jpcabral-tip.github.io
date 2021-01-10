@@ -2,7 +2,7 @@
 layout: post
 title:  "Quiz 2.1: Ansible"
 date:   2021-01-11 1:00:00 +0300
-image:  hands-on-act-2-banner.jpg
+image:  hands-on-act-3-banner.jpg
 tags:   [Prelim, Quiz]
 ---
 ## Tasks
