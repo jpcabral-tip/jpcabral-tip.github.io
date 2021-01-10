@@ -56,6 +56,7 @@ remote_user = jpcabral-tip
 {% endhighlight %}
 
 > jpcabral-tip/activity4/playbook.yaml
+{% highlight yaml %}
 ---
   - name: Install Packages for Ubuntu
     hosts: ubuntu
