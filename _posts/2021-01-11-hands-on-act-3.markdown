@@ -18,7 +18,9 @@ The following activity presents the use of Ansible as an automation tool via the
 ## Tasks
 
 Setup is Alpine and Ubuntu VMs are connected via a local network, in my case
+
 Alpine VM, IP is 192.168.122.117 (Or Any VM that has Git installed)
+
 Ubuntu VM,IP is 192.168.122.125 and hostname should be ubuntu-(your student number) (e.g. ubuntu-1110670)
 
 1. Fork the instructor repository and clone the repository.
