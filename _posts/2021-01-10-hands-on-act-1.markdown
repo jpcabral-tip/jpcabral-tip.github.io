@@ -11,57 +11,57 @@ Create a git repository locally and emphasize the use of Git in your local proje
 
 ## Output
 
-Install bash and vim.
+1. Install bash and vim.
 
-{% highlight bash %}
-localhost:~# apk add bash
-localhost:~# apk add vim
-{% endhighlight %}
+    {% highlight bash %}
+    localhost:~# apk add bash
+    localhost:~# apk add vim
+    {% endhighlight %}
 
-![]({{site.baseurl}}/img/hands-on-1-1.png)
-
-
-Install git.
-
-{% highlight bash %}
-localhost:~# apk add git
-{% endhighlight %}
-
-![]({{site.baseurl}}/img/hands-on-1-2.png)
+    ![]({{site.baseurl}}/img/hands-on-1-1.png)
 
 
-Create activity1 directory.
+2. Install git.
 
-{% highlight bash %}
-localhost:~# mkdir activity1
-{% endhighlight %}
+    {% highlight bash %}
+    localhost:~# apk add git
+    {% endhighlight %}
 
-![]({{site.baseurl}}/img/hands-on-1-3.png)
-
-
-Initialize activity1 as git repository.
-
-{% highlight bash %}
-localhost:~# cd activity1/
-localhost:~/activity1# git init
-{% endhighlight %}
-
-![]({{site.baseurl}}/img/hands-on-1-4.png)
+    ![]({{site.baseurl}}/img/hands-on-1-2.png)
 
 
-Created and added README.md.
+3. Create activity1 directory.
 
-{% highlight bash %}
-localhost:~/activity1# git add README.md
-{% endhighlight %}
+    {% highlight bash %}
+    localhost:~# mkdir activity1
+    {% endhighlight %}
 
-![]({{site.baseurl}}/img/hands-on-1-5.png)
+    ![]({{site.baseurl}}/img/hands-on-1-3.png)
 
 
-Commit README.md on the master branch.
+4. Initialize activity1 as git repository.
 
-{% highlight bash %}
-localhost:~/activity1# git commit -m "First Commit"
-{% endhighlight %}
+    {% highlight bash %}
+    localhost:~# cd activity1/
+    localhost:~/activity1# git init
+    {% endhighlight %}
 
-![]({{site.baseurl}}/img/hands-on-1-6.png)
+    ![]({{site.baseurl}}/img/hands-on-1-4.png)
+
+
+5. Created and added README.md.
+
+    {% highlight bash %}
+    localhost:~/activity1# git add README.md
+    {% endhighlight %}
+
+    ![]({{site.baseurl}}/img/hands-on-1-5.png)
+
+
+6. Commit README.md on the master branch.
+
+    {% highlight bash %}
+    localhost:~/activity1# git commit -m "First Commit"
+    {% endhighlight %}
+
+    ![]({{site.baseurl}}/img/hands-on-1-6.png)
