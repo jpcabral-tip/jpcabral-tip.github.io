@@ -29,8 +29,14 @@ tags:   [Prelim, Exam]
 
 ## Output
 
-> 1811023/prelim-exam/roles/changemotd/tasks/main.yml
+> 1811023/prelim-exam/config.yml
 {% highlight yaml %}
+motd: "Comment this line to change to default motd"
+user: "sample"
+{% endhighlight %}
+
+> 1811023/prelim-exam/roles/changemotd/tasks/main.yml
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/changemotd
 # Note: restart is needed for the motd changes to take effect
@@ -62,7 +68,7 @@ tags:   [Prelim, Exam]
 {% endhighlight %}
 
 > 1811023/prelim-exam/roles/java/tasks/main.yml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/java
 - name: Install Java open-jdk
@@ -73,7 +79,7 @@ tags:   [Prelim, Exam]
 {% endhighlight %}
 
 > 1811023/prelim-exam/roles/python/tasks/main.yml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/python
 - name: Install latest python3 and pip3
@@ -92,7 +98,7 @@ tags:   [Prelim, Exam]
 {% endhighlight %}
 
 > 1811023/prelim-exam/playbook.yaml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
   - name: Prelim Exam
     hosts: ubuntu

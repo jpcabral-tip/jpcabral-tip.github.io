@@ -57,7 +57,7 @@ become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity5/playbook.yaml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
   - name: Install Packages for Ubuntu
     hosts: ubuntu
@@ -96,7 +96,7 @@ become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity5/roles/installpackages-centos/tasks/main.yml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/installpackages-centos
 - name: Install Package
@@ -107,7 +107,7 @@ become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity5/roles/installpackages-ubuntu/tasks/main.yml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/installpackages-ubuntu
 - name: Install Package
@@ -118,7 +118,7 @@ become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity5/roles/pipinstall/tasks/main.yml
-{% highlight yaml %}
+{% highlight yaml+jinja %}
 ---
 # tasks file for roles/pipinstall
 - name: Pip Install Packages
