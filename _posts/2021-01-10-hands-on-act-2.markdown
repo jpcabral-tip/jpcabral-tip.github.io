@@ -132,4 +132,4 @@ localhost:~/sysad2-12021/activity2# git push origin activity2
 
 ![]({{site.baseurl}}/img/hands-on-2-14.png)
 
-<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity2"></a></p>
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity2"></a></p>.
