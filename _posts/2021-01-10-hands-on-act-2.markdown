@@ -2,7 +2,7 @@
 layout: post
 title:  "Hands-on Activity 2: Install and configure your repository in remote Git in GitHub"
 date:   2021-01-10 22:45:00 +0300
-image:  hands-on-act-1-banner.png
+image:  hands-on-act-2-banner.jpg
 tags:   [Prelim, Hands-on Activity]
 ---
 ## Objectives
@@ -41,7 +41,7 @@ Modified README.md.
 localhost:~/jpcabral-tip# vim README.md
 {% endhighlight %}
 
-```
+{% highlight html %}
 <b>Year Level: </b>Third Year
 
 <b>Interests: </b>Penetration Testing
@@ -52,7 +52,7 @@ localhost:~/jpcabral-tip# vim README.md
 *<b>CPU: </b>Ryzen 7 4800H (8 Cores 16 Threads)
 *<b>RAM: </b>16 GB DDR4 3200 MHz
 *<b>Disk: </b>SSD 256 GB, HDD 500 GB
-```
+{% endhighlight %}
 
 ![]({{site.baseurl}}/img/hands-on-2-4.png)
 
