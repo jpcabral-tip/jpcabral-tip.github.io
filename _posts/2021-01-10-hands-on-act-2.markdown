@@ -132,7 +132,6 @@ localhost:~/sysad2-12021/activity2# git push origin activity2
 
 ![]({{site.baseurl}}/img/hands-on-2-14.png)
 
-
 As seen on [Github][hands-on-act2-branch]
 
 [hands-on-act2-branch]: https://github.com/jpcabral-tip/sysad2-12021/tree/activity2
