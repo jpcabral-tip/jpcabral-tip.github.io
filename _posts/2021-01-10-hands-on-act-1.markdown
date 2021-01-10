@@ -3,7 +3,7 @@ layout: post
 title:  "Hands-on Activity 1: Install and configure your repository in Local Git"
 date:   2021-01-10 22:03:00 +0300
 image:  hands-on-act-1-banner.png
-tags:   [Prelim, Hands-on Activity]
+tags:   [Prelim, Hands-on Activity 1]
 ---
 ## Objectives
 
@@ -20,6 +20,7 @@ localhost:~# apk add vim
 
 ![]({{site.baseurl}}/img/hands-on-1-1.png)
 
+
 Install git.
 
 {% highlight bash %}
@@ -28,6 +29,7 @@ localhost:~# apk add git
 
 ![]({{site.baseurl}}/img/hands-on-1-2.png)
 
+
 Create activity1 directory.
 
 {% highlight bash %}
@@ -35,6 +37,7 @@ localhost:~# mkdir activity1
 {% endhighlight %}
 
 ![]({{site.baseurl}}/img/hands-on-1-3.png)
+
 
 Initialize activity1 as git repository.
 
@@ -45,6 +48,7 @@ localhost:~/activity1# git init
 
 ![]({{site.baseurl}}/img/hands-on-1-4.png)
 
+
 Created and added README.md.
 
 {% highlight bash %}
@@ -52,6 +56,7 @@ localhost:~/activity1# git add README.md
 {% endhighlight %}
 
 ![]({{site.baseurl}}/img/hands-on-1-5.png)
+
 
 Commit README.md on the master branch.
 
