@@ -5,7 +5,7 @@ date:   2021-01-11 00:15:00 +0300
 image:  hands-on-act-3-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
-The following activity presents the use of Ansible as an automation tool via the execution of Adhoc commands. Usage of the basic Ansible modules such as the 'shell' and 'copy' module is also included.
+The following activity presents the use of Ansible as an automation tool via the execution of Adhoc commands. Usage of basic Ansible modules such as the 'shell' and 'copy' modules are also included.
 
 ***
 
@@ -114,4 +114,4 @@ Execute via Ansible Adhoc using the following command:
 localhost:~/jpcabral-tip/activity3# ansible ubuntu -m copy -a "src: COPY_THIS_FILE dest: ~"
 {% endhighlight %}
 
-<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity3/jpcabral-tip/activity3">Github</a>.</p>
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity3/">Github</a>.</p>

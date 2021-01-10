@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hands-on Activity 4: Ansible Playbooks"
-date:   2021-01-11 01:00:00 +0300
+date:   2021-01-11 00:40:00 +0300
 image:  hands-on-act-3-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
@@ -95,7 +95,7 @@ remote_user = jpcabral-tip
 
 Execute using the following command to run the playbook:
 {% highlight bash %}
-localhost:~/jpcabral-tip/activity3# ansible-playbook playbook.yaml
+localhost:~/jpcabral-tip/activity4# ansible-playbook playbook.yaml
 {% endhighlight %}
 
-<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity4/jpcabral-tip/activity4">Github</a>.</p>
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity4">Github</a>.</p>
