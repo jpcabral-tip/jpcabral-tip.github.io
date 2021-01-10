@@ -11,14 +11,14 @@ Create a local directory and link it in a centralized repository in Github.
 
 ## Output
 
-1) Create repository (named as 'username').
+1) Create a github account and proceed on creating a profile repository (named as 'username').
 
 ![]({{site.baseurl}}/img/hands-on-2-1.png)
 
 2) Clone repository.
 
 {% highlight bash %}
-localhost:~# git clone https://github.com/.jpcabral-tip/jpcabral-tip.git
+localhost:~# git clone https://github.com/jpcabral-tip/jpcabral-tip.git
 localhost:~# cd jpcabral-tip
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-2.png)
