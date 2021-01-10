@@ -40,10 +40,155 @@ become_ask_pass = False
 192.168.254.135
 {% endhighlight %}
 
+> 1811023/quiz23/roles/copyphp/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/copyphp
+- name: Copy PHP file
+  copy:
+    src: "{{ src }}"
+    dest: "/var/www/{{ domain_name }}/{{ src }}"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: phpfile
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+  when: phpfile.changed
+{% endhighlight %}
+
+> 1811023/quiz23/roles/createdbmysql/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/createdbmysql
+- name: Create database
+  mysql_db:
+    login_host: "{{ db_host }}"
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_pass }}"
+    name: "{( db_name }}"
+    state: present
+
+- name: Copy the SQL script on remote host
+  copy:
+    src: "{{ db_sql }}"
+    dest: "~"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: sqlFile
+
+- name: Import SQL scipt
+  mysql_db:
+    login_host: "{{ db_host }}"
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_pass }}"
+    state: import
+    name: all
+    target: "~/{{ db_sql }}"
+  when: sqlFile.changed
+{% endhighlight %}
+
+> 1811023/quiz23/roles/createdbusermysql/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/createdbusermysql
+- name: Create MySQL user
+  shell: mysql -e "CREATE USER IF NOT EXISTS '{{ db_user }}'@'localhost' IDENTIFIED WITH mysql_native_password BY '{{ db_pass }}'"; mysql -e "CREATE USER IF NOT EXISTS '{{ db_user }}'@'%' IDENTIFIED WITH mysql_native_password BY '{{ db_pass }}'";
+
+- name: Escalate created MySQL user
+  shell: set -f; mysql -e "GRANT ALL PRIVILEGES ON *.* TO '{{ db_user }}'@'localhost'"; mysql -e "GRANT ALL PRIVILEGES ON *.* TO '{{ db_user }}'@'%'"
+{% endhighlight %}
+
+> 1811023/quiz23/roles/createvirtualhost/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/createvirtualhost
+- name: Create directory for domain in /var/www/
+  file:
+    path: "/var/www/{{ domain_name }}"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Copy domain configuration to /etc/apache2/sites-available/
+  copy:
+    src: "{{ src }}"
+    dest: "/etc/apache2/sites-available/{{ domain_name }}.conf"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: fileregister
+
+- name: Set domain in front
+  shell: "a2ensite {{ domain_name }}; a2dissite 000-default"
+  register: fileregister
+
+- name: New index.html
+  copy:
+    src: "{{ indexhtml }}"
+    dest: "/var/www/{{ domain_name }}/index.html"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: fileregister
+
+- name: Create info.php on the domain directory inside /var/www/
+  copy:
+    content: "<?php phpinfo();"
+    dest: "/var/www/{{ domain_name }}/info.php"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: fileregister
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+  when: fileregister.changed
+{% endhighlight %}
+
+> 1811023/quiz23/roles/installpackages/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/installpackages
+- name: Install Packages
+  apt:
+    name: "{{ package }}"
+    state: latest
+    update_cache: yes
+{% endhighlight %}
+
+> 1811023/quiz23/roles/pipinstall/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/pipinstall
+- name: Install python packages using pip
+  pip:
+    name: "{{ pippackage }}"
+© 2021 GitHub, Inc.
+{% endhighlight %}
+
+> 1811023/quiz23/roles/startservice/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/startservice
+- name: Start and Enable Service/s
+  service:
+    name: "{{ service }}"
+    state: started
+    enabled: yes
+{% endhighlight %}
+
 > 1811023/quiz23/playbook.yaml
 {% highlight yaml %}
 ---
-  - name: Quiz 2.2 Ansible Playbooks
+  - name: Quiz 2.3 Ansible Roles
     hosts: ubuntu
     
     tasks:
@@ -52,11 +197,16 @@ become_ask_pass = False
         file: vars/db_config_vars.yaml
 
 
-    - name: Install Apache2
-      apt:
-        name: apache2
-        state: latest
-        update_cache: yes
+    - name: Install LAMP (Linux, Apache, MySQL PHP Stack)
+      include_role:
+        name: installpackages
+      vars:
+        package:
+          - apache2
+          - mysql-server
+          - php
+          - libapache2-mod-php
+          - php-mysql
     
     - name: Allow HTTP on Port 80
       ufw:
@@ -65,135 +215,64 @@ become_ask_pass = False
         proto: tcp
 
     - name: Start and enable Apache service
-      service:
-        name: apache2
-        state: started
-        enabled: yes
+      include_role:
+        name: startservice
+      vars:
+        service: apache2
 
-    - name: Install MySQL
-      apt:
-        name: mysql-server
-        state: present
-        update_cache: yes
-   
-    - name: Start MySQL server
-      service:
-        name: mysql
-        state: started
-        enabled: yes
+    - name: Start and enable MySQL service
+      include_role:
+        name: startservice
+      vars:
+        service: mysql
 
-    - name: Install PHP
-      apt:
-        name:
-          - php
-          - libapache2-mod-php
-          - php-mysql
-        state: present
-        update_cache: yes
-    
-    - name: Create /var/www/jpcabral-tip/ for domain config
-      file:
-        path: /var/www/jpcabral-tip
-        state: directory
+    - name: Configure Apache with virtual host using createvirtualhost role
+      include_role:
+        name: createvirtualhost
+      vars:
+        domain_name: jpcabral-tip
         owner: jpcabral-tip
         group: jpcabral-tip
-        mode: '0755'
-
-    - name: Copy jpcabral-tip.conf to /etc/apache2/sites-available/jpcabral-tip.conf
-      copy:
         src: jpcabral-tip.conf
-        dest: /etc/apache2/sites-available/jpcabral-tip.conf
-        owner: jpcabral-tip
-        group: jpcabral-tip
-        mode: '0755'
-
-    - name: a2ensite jpcabral-tip
-      shell: "a2ensite jpcabral-tip; a2dissite 000-default"
-      notify:
-      - Restart Apache
-
-    - name: New index.html
-      copy:
-        src: index.html
-        dest: /var/www/jpcabral-tip/index.html
-        owner: jpcabral-tip
-        group: jpcabral-tip
-        mode: '0755'
-      notify:
-      - Restart Apache
-    
-    - name: Create info.php on /var/www/jpcabral-tip/
-      copy:
-        content: "<?php phpinfo();"
-        dest: /var/www/jpcabral-tip/info.php
-        owner: jpcabral-tip
-        group: jpcabral-tip
-        mode: '0755'
-      notify:
-      - Restart Apache
+        indexhtml: index.html
 
     # OPTIONAL PHP MYSQL TASKS??
-    - name: Install MySQL module requirements
-      apt:
-        name:
+    - name: Install MySQL module using installpackages role
+      include_role:
+        name: installpackages
+      vars:
+        package: 
           - python3
           - python3-pymysql
-        state: latest
-        update_cache: yes
     
-    - name: Install pip requirements for MySQL module
-      pip:
-        name:
+    - name: Install pip requirements for MySQL module using pipinstall role
+      include_role:
+        name: pipinstall
+      vars:
+        pippackage:
           - pymysql
-    
-    - name: Create MySQL user
-      shell: mysql -e "CREATE USER IF NOT EXTSTS '{{ db_user }}'@'localhost' IDENTIFIED WITH mysql_native_password BY '{{ db_pass }}'"; mysql -e "CREATE USER IF NOT EXISTS '{{ db_user }}'@'%' IDENTIFIED WITH mysql_native_password BY '{{ db_pass }}'"
-    
-    - name: Escalate created MySQL user
-      shell: set -f; mysql -e "GRANT ALL PRIVILEGES ON *.* TO '{{ db_user }}'@'localhost'"; mysql -e "GRANT ALL PRIVILEGES ON *.* TO '{{ db_user }}'@'%'"
 
-    - name: Create example_database
-      mysql_db:
-        login_host: "{{ db_host }}"
-        login_user: "{{ db_user }}"
-        login_password:  "{{ db_pass }}"
-        name: example_database
-        state: present
-    
-    - name: Copy the SQL script on remote host
-      copy:
-        src: db.sql
-        dest: "~"
+    - name: Create database user using createdbusermysql role
+      include_role:
+        name: createdbusermysql
+
+    - name: Create database using createdbmysql role
+      include_role:
+        name: createdbmysql
+      vars:
+        db_name: example_database
+        db_sql: db.sql
         owner: jpcabral-tip
         group: jpcabral-tip
-        mode: '0775'
-      register: sqlFile
 
-    - name: Import SQL
-      mysql_db:
-        login_host: "{{ db_host }}"
-        login_user: "{{ db_user }}"
-        login_password: "{{ db_pass }}"
-        state: import
-        name: all
-        target: "~/db.sql"
-      when: sqlFile.changed
-
-    - name: Copy todo_list.php
-      copy:
+    - name: Copy php code using copyphp role
+      include_role:
+        name: copyphp
+      vars:
         src: todo_list.php
-        dest: /var/www/jpcabral-tip/todo_list.php
+        domain_name: jpcabral-tip
         owner: jpcabral-tip
         group: jpcabral-tip
-        mode: '0755'
-      notify:
-      - Restart Apache
-
-    handlers:
-      - name: Restart Apache
-        service:
-          name: apache2
-          state: restarted
 {% endhighlight %}
 
 > 1811023/quiz23/files/db.sql
