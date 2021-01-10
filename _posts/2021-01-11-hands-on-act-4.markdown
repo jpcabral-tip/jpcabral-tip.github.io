@@ -23,7 +23,7 @@ This activity demonstrates the creation of a simple ansible playbook filled with
 
 3. Make a new branch named "activity4" from master branch using git branch activity4 and git checkout activity4
 
-    Note: To Prevent Conflicts Create a directory with your username as its name and go inside of it, and create a directory called "activity4" and go inside it.
+    * Note: To Prevent Conflicts Create a directory with your username as its name and go inside of it, and create a directory called "activity4" and go inside it.
 
 4. Make a new new remote upstream with git remote add upstream https://github.com/ajcanlas-tip/sysad2-12021.git
 
