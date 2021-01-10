@@ -17,7 +17,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     localhost:~# apk add bash
     localhost:~# apk add vim
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-1.png)
 
 
@@ -26,7 +25,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% highlight bash %}
     localhost:~# apk add git
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-2.png)
 
 
@@ -35,7 +33,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% highlight bash %}
     localhost:~# mkdir activity1
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-3.png)
 
 
@@ -45,7 +42,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     localhost:~# cd activity1/
     localhost:~/activity1# git init
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-4.png)
 
 
@@ -54,7 +50,6 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% highlight bash %}
     localhost:~/activity1# git add README.md
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-5.png)
 
 
@@ -63,5 +58,4 @@ Create a git repository locally and emphasize the use of Git in your local proje
     {% highlight bash %}
     localhost:~/activity1# git commit -m "First Commit"
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-1-6.png)

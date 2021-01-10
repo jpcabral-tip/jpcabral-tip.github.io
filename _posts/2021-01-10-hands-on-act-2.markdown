@@ -22,7 +22,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~# git clone https://github.com/.jpcabral-tip/jpcabral-tip.git
     localhost:~# cd jpcabral-tip
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-2.png)
 
 
@@ -31,7 +30,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% highlight bash %}
     localhost:~/jpcabral-tip# touch README.md
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-3.png)
 
 
@@ -40,7 +38,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% highlight bash %}
     localhost:~/jpcabral-tip# vim README.md
     {% endhighlight %}
-
     {% highlight html %}
     <b>Year Level: </b>Third Year
 
@@ -53,7 +50,6 @@ Create a local directory and link it in a centralized repository in Github.
     *<b>RAM: </b>16 GB DDR4 3200 MHz
     *<b>Disk: </b>SSD 256 GB, HDD 500 GB
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-4.png)
 
 
@@ -67,7 +63,7 @@ Create a local directory and link it in a centralized repository in Github.
     ![]({{site.baseurl}}/img/hands-on-2-5.png)
 
 
-6.Forked https://github.com/ajcanlas-tip/sysad2-12021.git repository.
+6. Forked https://github.com/ajcanlas-tip/sysad2-12021.git repository.
 
     ![]({{site.baseurl}}/img/hands-on-2-6.png)
 
@@ -79,7 +75,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~# git clone https://github.com/jpcabral-tip/sysad2-12021.git
     localhost:~# cd sysad2-12021
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-3.png)
 
 
@@ -90,7 +85,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~# git clone https://github.com/jpcabral-tip/sysad2-12021.git
     localhost:~# cd sysad2-12021
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-7.png)
 
 
@@ -100,7 +94,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~/sysad2-12021# git checkout master
     localhost:~/sysad2-12021# git branch activity2
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-8.png)
 
 
@@ -110,7 +103,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~/sysad2-12021# git checkout activity2
     localhost:~/sysad2-12021# git status
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-9.png)
 
 
@@ -119,7 +111,6 @@ Create a local directory and link it in a centralized repository in Github.
     {% highlight bash %}
     localhost:~/sysad2-12021# git remote add upstream https://github.com/ajcanlas-tip/sysad2-12021.git
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-10.png)
 
 
@@ -133,7 +124,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~/sysad2-12021/activity2# cp ~/jpcabral-tip/README.md HA2.md
     localhost:~/sysad2-12021/activity2# ls
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-11.png)
 
 
@@ -144,7 +134,6 @@ Create a local directory and link it in a centralized repository in Github.
     localhost:~/sysad2-12021/activity2# git commit -m "First commit for activity2"
     localhost:~/sysad2-12021/activity2# git push origin activity2
     {% endhighlight %}
-
     ![]({{site.baseurl}}/img/hands-on-2-12.png)
 
 
