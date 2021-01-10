@@ -32,4 +32,4 @@ tags:   [Prelim, Quiz]
 {% endhighlight %}
 
 
-<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/cabral-quiz1-3">Github</a></p>.
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/cabral-quiz1-3">Github</a>.</p>
