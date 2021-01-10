@@ -18,6 +18,7 @@ tags:   [Prelim, Quiz]
 ## Output
 
 > 1811023/quiz21/README.md
+{% highlight html %}
 # Ansible Basics
 The following steps show how to create a baisc Ansible configuration and inventory file, as well as basic execution of Ansible commands through ad-hoc. This assumes Ansible has already been installed on the host machine, and a dedicated working directory has been created. Target hosts/VMs are also expected to be configured with proper SSH authentication and assumes that the public key from the host machine has been appended on the authorized_keys of the target machines.
 
