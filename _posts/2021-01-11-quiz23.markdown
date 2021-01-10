@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Quiz 2.2. Ansible Playbooks"
-date:   2021-01-11 1:20:00 +0300
-image:  quiz-22-banner.png
+title:  "Quiz 2.3. Ansible Roles"
+date:   2021-01-11 1:30:00 +0300
+image:  quiz-23-banner.png
 tags:   [Prelim, Quiz]
 ---
 ## Tasks
 
-1. Create a directory named "quiz22" in your student number directory in Quiz 1.3
+1. Create a directory named "quiz23" in your student number directory in Quiz 1.3
 2. Create a markdown file named "README.md" in the newly created directory with the directory summary.
 3. Transform this procedure (Links to an external site.) as a playbook 
 4. Then create a Pull request and put your forked repo in the only question of this quiz (Note answer this quiz as well as create a pull request).
@@ -16,7 +16,7 @@ tags:   [Prelim, Quiz]
 
 ## Output
 
-> 1811023/quiz22/ansible.cfg
+> 1811023/quiz23/ansible.cfg
 {% highlight cfg %}
 [defaults]
 
@@ -34,13 +34,13 @@ become_ask_pass = False
 # NOTE: Configure remote host/s to allow remote_user to execute sudo withoout password using sudo visudo. Append `<remote_user> ALL=(ALL) NOPASSWD:ALL`
 {% endhighlight %}
 
-> 1811023/quiz22/inventory
+> 1811023/3/inventory
 {% highlight cfg %}
 [ubuntu]
 192.168.254.135
 {% endhighlight %}
 
-> 1811023/quiz22/playbook.yaml
+> 1811023/quiz23/playbook.yaml
 {% highlight yaml %}
 ---
   - name: Quiz 2.2 Ansible Playbooks
@@ -196,7 +196,7 @@ become_ask_pass = False
           state: restarted
 {% endhighlight %}
 
-> 1811023/quiz22/files/db.sql
+> 1811023/quiz23/files/db.sql
 {% highlight mysql %}
 CREATE SCHEMA IF NOT EXISTS example_database;
 
@@ -216,7 +216,7 @@ INSERT INTO example_database.todo_list(content) VALUES("My third important item"
 INSERT INTO example_database.todo_list(content) VALUES("and this one more thing");
 {% endhighlight %}
 
-> 1811023/quiz22/files/index.html
+> 1811023/quiz23/files/index.html
 {% highlight html %}
 <html>
 	<head>
@@ -230,7 +230,7 @@ INSERT INTO example_database.todo_list(content) VALUES("and this one more thing"
 </html>
 {% endhighlight %}
 
-> 1811023/quiz22/files/jpcabral-tip.conf
+> 1811023/quiz23/files/jpcabral-tip.conf
 {% highlight apache %}
 <VirtualHost *:80>
 	ServerName jpcabral-tip
@@ -241,7 +241,7 @@ INSERT INTO example_database.todo_list(content) VALUES("and this one more thing"
 </VirtualHost>
 {% endhighlight %}
 
-> 1811023/quiz22/files/todo_list.php
+> 1811023/quiz23/files/todo_list.php
 {% highlight php %}
 <?php
 $user = "jpcabral-tip";
@@ -262,7 +262,7 @@ try {
 }
 {% endhighlight %}
 
-> 1811023/quiz22/README.md
+> 1811023/quiz23/README.md
 {% highlight html %}
 # Directory Summary
 
@@ -276,18 +276,138 @@ try {
 ## Requirements
 
 * SSH private key file for authentication placed on working directory.
-* Declare MySQL database user for local and remote hosts. (to be supplied in ``vars/db_config_vars.yaml``
+* Declared MySQL database user for local and remote hosts. (to be supplied in ``vars/db_config_vars.yaml``
 Note: ``private.key`` and ``vars/db_config_vars.yaml`` are placed on ``.gitignore`` and must be supplied before executing the playbook.
 
 ## Directory Structure
 
 ```
-quiz22
+quiz23
 	files/
 		db.sql
 		index.html
 		jpcabral-tip.conf
-		todo_list.php	
+		todo_list.php
+	roles/
+		copyphp/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		createdbusermysql/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		createdbmysql/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		createvirtualhost/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		installpackages/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		pipinstall/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		startservice/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
 	vars/
 		db_config_vars.yaml*
 ansible.cfg
@@ -313,7 +433,7 @@ Note: Files marked with asterisk (*) at the end are declared inside ``.gitignore
 
 Execute using the following command to run the playbook:
 {% highlight bash %}
-localhost:~/1811023/quiz22# ansible-playbook playbook.yaml
+localhost:~/1811023/quiz23# ansible-playbook playbook.yaml
 {% endhighlight %}
 
-<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz22">Github</a>.</p>
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz23">Github</a>.</p>
