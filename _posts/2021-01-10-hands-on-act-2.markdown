@@ -75,18 +75,9 @@ localhost:~/jpcabral-tip# cd ~
 localhost:~# git clone https://github.com/jpcabral-tip/sysad2-12021.git
 localhost:~# cd sysad2-12021
 {% endhighlight %}
-![]({{site.baseurl}}/img/hands-on-2-3.png)
-
-8) Clone forked repository.
-
-{% highlight bash %}
-localhost:~/jpcabral-tip# cd ~
-localhost:~# git clone https://github.com/jpcabral-tip/sysad2-12021.git
-localhost:~# cd sysad2-12021
-{% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-7.png)
 
-9) Created activity2 branch
+8) Created activity2 branch
 
 {% highlight bash %}
 localhost:~/sysad2-12021# git checkout master
@@ -94,7 +85,7 @@ localhost:~/sysad2-12021# git branch activity2
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-8.png)
 
-10) Switched to activity2 branch
+9) Switched to activity2 branch
 
 {% highlight bash %}
 localhost:~/sysad2-12021# git checkout activity2
@@ -102,14 +93,14 @@ localhost:~/sysad2-12021# git status
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-9.png)
 
-11) Added an upstream repository.
+10) Added an upstream repository.
 
 {% highlight bash %}
 localhost:~/sysad2-12021# git remote add upstream https://github.com/ajcanlas-tip/sysad2-12021.git
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-10.png)
 
-12) Copy previous README.md as HA2.md.
+11) Copy previous README.md as HA2.md.
 
 {% highlight bash %}
 localhost:~/sysad2-12021# mkdir jpcabral-tip/
@@ -121,7 +112,7 @@ localhost:~/sysad2-12021/activity2# ls
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-11.png)
 
-13) Push to activity2 branch.
+12) Push to activity2 branch.
 
 {% highlight bash %}
 localhost:~/sysad2-12021/activity2# git add .
@@ -130,11 +121,11 @@ localhost:~/sysad2-12021/activity2# git push origin activity2
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-12.png)
 
-14) Open a pull request for the master branch of the upstream with the activity2 branch.
+13) Open a pull request for the master branch of the upstream with the activity2 branch.
 
 ![]({{site.baseurl}}/img/hands-on-2-13.png)
 
-15) The request can be viewed under the 'Pull requests' tab of the upstream repository.
+14) The request can be viewed under the 'Pull requests' tab of the upstream repository.
 
 ![]({{site.baseurl}}/img/hands-on-2-14.png)
 
