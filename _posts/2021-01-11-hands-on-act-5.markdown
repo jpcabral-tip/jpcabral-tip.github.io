@@ -44,6 +44,14 @@ The activity showcases the use of ansible roles to optimize an Ansible playbook.
 # Basic Configuration
 inventory = ./inventory
 remote_user = jpcabral-tip
+private_key_file = ./private.key
+
+# Priviege Escalation
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity5/inventory.cfg

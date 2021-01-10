@@ -44,6 +44,14 @@ This activity demonstrates the creation of a simple ansible playbook filled with
 # Basic Configuration
 inventory = ./inventory
 remote_user = jpcabral-tip
+private_key_file = ./private.key
+
+# Priviege Escalation
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
 {% endhighlight %}
 
 > jpcabral-tip/activity4/inventory.cfg
