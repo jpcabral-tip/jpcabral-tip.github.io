@@ -2,7 +2,7 @@
 layout: post
 title:  "Hands-on Activity 5: Implement Ansible roles in playbooks"
 date:   2021-01-11 01:00:00 +0300
-image:  hands-on-act-3-banner.png
+image:  hands-on-act-5-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
 The activity showcases the use of ansible roles to optimize an Ansible playbook.

@@ -2,7 +2,7 @@
 layout: post
 title:  "Hands-on Activity 4: Ansible Playbooks"
 date:   2021-01-11 00:40:00 +0300
-image:  hands-on-act-3-banner.png
+image:  hands-on-act-4-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
 This activity demonstrates the creation of a simple ansible playbook filled with various Ansible modules.
