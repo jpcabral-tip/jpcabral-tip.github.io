@@ -3,7 +3,7 @@ layout: post
 title:  "Hands-on Activity 2: Install and configure your repository in remote Git in GitHub"
 date:   2021-01-10 22:45:00 +0300
 image:  hands-on-act-1-banner.png
-tags:   [Prelim, Hands-on Activity 2]
+tags:   [Prelim, Hands-on Activity]
 ---
 ## Objectives
 

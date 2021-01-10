@@ -3,7 +3,7 @@ layout: post
 title:  "Hands-on Activity 1: Install and configure your repository in Local Git"
 date:   2021-01-10 22:03:00 +0300
 image:  hands-on-act-1-banner.png
-tags:   [Prelim, Hands-on Activity 1]
+tags:   [Prelim, Hands-on Activity]
 ---
 ## Objectives
 
