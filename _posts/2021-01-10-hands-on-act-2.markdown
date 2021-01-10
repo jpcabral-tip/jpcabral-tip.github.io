@@ -5,9 +5,11 @@ date:   2021-01-10 22:45:00 +0300
 image:  hands-on-act-2-banner.jpg
 tags:   [Prelim, Hands-on Activity]
 ---
+This activity showcases how to synchronize or upload a local git repository online as a remote repository on github. It also tackles how to clone a remote repository on a local machine and keep track of its changes as well.
+
 ## Objectives
 
-Create a local directory and link it in a centralized repository in Github.
+* Create a local directory and link it in a centralized repository in Github.
 
 ## Output
 

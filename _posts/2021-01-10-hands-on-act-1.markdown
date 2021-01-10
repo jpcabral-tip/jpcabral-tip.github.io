@@ -5,9 +5,11 @@ date:   2021-01-10 22:03:00 +0300
 image:  hands-on-act-1-banner.png
 tags:   [Prelim, Hands-on Activity]
 ---
+This activity demonstrates how to create a local git repository. It also tackles how to track changes through commits.
+
 ## Objectives
 
-Create a git repository locally and emphasize the use of Git in your local project in a CI/CD environment.
+* Create a git repository locally and emphasize the use of Git in your local project in a CI/CD environment.
 
 ## Output
 
