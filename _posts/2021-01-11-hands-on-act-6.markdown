@@ -5,7 +5,7 @@ date:   2021-01-11 12:45:00 +0300
 image:  hands-on-act-6-banner.png
 tags:   [Midterm, Hands-on Activity]
 ---
-The activity showcases the use of ansible roles to optimize an Ansible playbook.
+The activity showcases the use of Ansible playbook to automate the installation of managed enterprise services. Specifically, the resulting playbook of this activity installs and configure an Apache web server and a VSFTP server.
 
 ***
 

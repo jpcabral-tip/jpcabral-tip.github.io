@@ -1,0 +1,448 @@
+---
+layout: post
+title:  "Quiz 3.2: Common Workload Services"
+date:   2021-01-11 14:00:00 +0300
+image:  quiz-32-banner.png
+tags:   [Midterm, Quiz]
+---
+## Tasks
+
+1. Create a directory named "quiz32" in your student number directory in Quiz 1.3
+2. Create a markdown file named "README.md" in the newly created directory with the directory summary.
+3. Create a playbook to install and configure an httpd server.
+4. Then create a Pull request and put your forked repo in the only question of this quiz (Note answer this quiz as well as create a pull request).
+
+***
+
+## Output
+
+> 1811023/quiz32/ansible.cfg
+{% highlight cfg %}
+[defaults]
+
+# Basic Configuration
+inventory = ./inventory
+remote_user = jpcabral-tip
+private_key_file = ./private.key
+
+# Priviege Escalation
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+# NOTE: Configure remote host/s to allow remote_user to execute sudo withoout password using sudo visudo. Append `<remote_user> ALL=(ALL) NOPASSWD:ALL`
+{% endhighlight %}
+<br>
+
+> 1811023/quiz32/inventory
+{% highlight cfg %}
+[webserver]
+192.168.254.120
+192.168.254.121
+{% endhighlight %}
+<br>
+
+> 1811023/quiz32/config.yaml
+{% highlight yaml %}
+domain: jpcabral-tip
+owner: jpcabral-tip
+group: jpcabral-tip
+ubuntu_src: jpcabral-tip-ubuntu.conf
+centos_src: jpcabral-tip-centos.conf
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/roles/configureapacheubuntu/tasks/main.yml
+{% highlight yaml+jinja %}
+---
+# tasks file for roles/configureapacheubuntu
+- name: Stop Firewall
+  service:
+    name: ufw
+    state: stopped
+    enabled: no
+
+- name: Start and enable Apache service
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Create /var/www/domain/ for domain config
+  file:
+    path: "/var/www/{{ domain }}"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Copy conf file to /etc/apache2/sites-available
+  copy:
+    src: "{{ ubuntu_src }}"
+    dest: "/etc/apache2/sites-available/{{ domain }}.conf"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: result
+
+- name: Set new virtual host above default
+  shell: "a2ensite {{ domain }}; a2dissite 000-default"
+  when: result.changed
+
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: "/var/www/{{ domain }}/index.html"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: index_html
+
+- name: Restart Apache2
+  service:
+    name: apache2
+    state: restarted
+  when: index_html.changed
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/roles/configurehttpdcentos/tasks/main.yml
+{% highlight yaml+jinja %}
+---
+# tasks file for roles/configurehttpdcentos
+- name: Stop Firewall
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: Start and enable HTTPD service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Create /var/www/domain/ for domain config
+  file:
+    path: "/var/www/{{ domain }}"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Create /var/www/domain/html for domain config
+  file:
+    path: "/var/www/{{ domain }}/html"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Create /var/www/domain/log for domain config
+  file:
+    path: "/var/www/{{ domain }}/log"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: "/var/www/{{ domain }}/html/index.html"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: index_html
+
+- name: Create /etc/httpd/sites-available
+  file:
+    path: "/etc/httpd/sites-available"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Create /etc/httpd/sites-enabled
+  file:
+    path: "/etc/httpd/sites-enabled"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+
+- name: Append Optional files option on httpd.conf
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    line: "IncludeOptional sites-enabled/*.conf"
+  register: httpd_conf
+
+- name: Copy conf file to /etc/httpd/sites-available/
+  copy:
+    src: "{{ centos_src }}"
+    dest: "/etc/httpd/sites-available/{{ domain }}.conf"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0755'
+  register: result
+
+- name: Serve virtual host
+  file:
+    src: "/etc/httpd/sites-available/{{ domain }}.conf"
+    dest: "/etc/httpd/sites-enabled/{{ domain }}.conf"
+    state: link
+
+- name: Install python-utils for semanage
+  yum:
+    name: policycoreutils-python-utils
+    state: latest
+    update_cache: yes
+
+- name: Adjust apache policies
+  seboolean:
+    name: httpd_unified
+    state: yes
+    persistent: yes
+
+- name: Restart httpd
+  service:
+    name: httpd
+    state: restarted
+  when: index_html.changed or result.changed
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/roles/installpackagecentos/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/installpackagecentos
+- name: Install Package using dnf
+  yum:
+    name: "{{ package }}"
+    state: latest
+    update_cache: yes
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/roles/installpackageubuntu/tasks/main.yml
+{% highlight yaml %}
+---
+# tasks file for roles/installpackageubuntu
+- name: Install package
+  apt:
+    name: "{{ package }}"
+    state: latest
+    update_cache: yes
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/files/index.html
+{% highlight html %}
+<html>
+	<head>
+		<title>jpcabral-tip</title>
+	</head>
+	<body>
+		<h1>Welcome!</h1>
+
+		<p>This is the landing page of <strong>jpcabral-tip</strong>.</p>
+	</body>
+</html>
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/files/jpcabral-tip-centos.conf
+{% highlight aconf %}
+<VirtualHost *:80>
+	ServerName www.jpcabral-tip
+	ServerAlias jpcabral-tip
+	DocumentRoot /var/www/jpcabral-tip/html
+	ErrorLog /var/www/jpcabral-tip/log/error.log
+	CustomLog /var/www/jpcabral-tip/log/requests.log combined
+</VirtualHost>
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz32/files/jpcabral-tip-ubuntu.conf
+{% highlight aconf %}
+<VirtualHost *:80>
+	ServerName jpcabral-tip
+	ServerAlias www.jpcabral-tip
+	DocumentRoot /var/www/jpcabral-tip
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+{% endhighlight %}
+<br>
+
+> 1811023/quiz32/playbook.yaml
+{% highlight yaml %}
+---
+  - name: Install HTTPD
+    hosts: webserver
+
+    tasks:
+    - name: Install Apache using installpackageubuntu role
+      include_role:
+        name: installpackageubuntu
+      vars:
+        package: apache2
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Install HTTPD using installpackagecentos role
+      include_role:
+        name: installpackagecentos
+      vars:
+        package: httpd
+      when: ansible_facts['os_family'] == 'RedHat'
+
+
+  - name: Configure HTTPD
+    hosts: webserver
+
+    tasks:
+      # REPLACE VALUES OF VARIABLES ON config.yaml
+    - name: Include config.yaml variables
+      include_vars:
+        file: config.yaml
+
+    - name: Configure Apache2 using configureapacheubuntu role
+      include_role:
+        name: configureapacheubuntu
+      when: ansible_facts['os_family'] == 'Debian'
+  
+    - name: Configure HTTPD using configurehttpdcentos role
+      include_role:
+        name: configurehttpdcentos
+      when: ansible_facts['os_family'] == 'RedHat'
+
+{% endhighlight %}
+<br>
+
+> 1811023/quiz23/README.md
+{% highlight html %}
+# Directory Summary
+
+**Author:** Jose Paulo Cabral
+
+## Prequisites
+
+* Ansible (installed on local machine)
+* SSH (installed on both local and remote machine/s)
+* Target Machine: Ubuntu 20.04 Server Edition LTS and/or Centos 8
+
+## Requirements
+
+* configured SSH key-based authentication
+* passwordless sudo on remote machines
+	Note: On remote machines execute ``sudo visudo`` and append the following line to enable passwordless sudo on account.
+	```
+	<user> ALL=(ALL) NOPASSWD:ALL
+	```
+
+## Directory Structure
+
+```
+quiz32
+	files/
+		index.html
+		jpcabral-tip-centos.conf
+		jpcabral-tip.ubuntu.conf
+	roles/
+		configureapacheubuntu/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		configurehttpdcentos/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		installpackagecentos/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+		installpackageubuntu/
+			defaults/
+				main.yml
+			files/
+			handlers/
+				main.yml
+			meta/
+				main.yml
+			tasks/
+				main.yml
+			templates/
+			tests/
+				inventory
+				test.yml
+			vars/
+				main.yml
+			README.md
+ansible.cfg
+inventory
+playbook.yaml
+config.yaml
+README.md
+```
+
+## Declaring Values for Variables
+Inside the ``config.yaml`` file are the variables used in the playbook (imported for the roles). Redeclare the values for each variable in the following format.
+
+```
+domain: <custom_domain>
+owner: <file_owner>
+group: <group_owner_for_file>
+ubuntu_src: <configuration file for apache2 in ubuntu>
+centos_src: <configuration file for httpd in centos>
+```
+
+## Executing the Playbook
+Execute 	``playbook.yaml`` using the command:
+
+```
+$ ansible-playbook playbook.yaml
+```
+{% endhighlight %}
+<br>
+
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz32">Github</a>.</p>
