@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Quiz 3.1: Managed Information Systems Services"
-date:   2021-01-11 1:30:00 +0300
+date:   2021-01-11 13:30:00 +0300
 image:  quiz-31-banner.png
 tags:   [Midterm, Quiz]
 ---
