@@ -203,7 +203,54 @@ centos_vsftpd: c-vsftpd.conf
     name: ufw
     state: stopped
     enabled: no
-{% endhighli
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz31/files/c-vsftpd.conf
+{% highlight aconf %}
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+xferlog_std_format=YES
+chroot_local_user=YES
+allow_writeable_chroot=YES
+listen=NO
+listen_ipv6=YES
+pasv_min_port=30000
+pasv_max_port=31000
+userlist_file=/etc/vsftpd/user_list
+userlist_deny=NO
+pam_service_name=vsftpd
+userlist_enable=YES
+{% endhighlight %}
+<br>
+
+> jpcabral-tip/quiz31/files/u-vsftpd.conf
+{% highlight aconf %}
+listen=NO
+listen_ipv6=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+chroot_local_user=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+force_dot_files=YES
+pasv_min_port=40000
+pasv_max_port=50000
+user_sub_token=$USER
+local_root=/home/$USER/ftp
+{% endhighlight %}
+<br>
 
 > 1811023/quiz31/playbook.yaml
 {% highlight yaml %}
@@ -273,24 +320,26 @@ centos_vsftpd: c-vsftpd.conf
 
 * Ansible (installed on local machine)
 * SSH (installed on both local and remote machine/s)
+* Target Machine: Ubuntu 20.04 Server Edition LTS and/or Centos 8
 
 ## Requirements
 
-* SSH private key file for authentication placed on working directory.
-* Declared MySQL database user for local and remote hosts. (to be supplied in ``vars/db_config_vars.yaml``
-Note: ``private.key`` and ``vars/db_config_vars.yaml`` are placed on ``.gitignore`` and must be supplied before executing the playbook.
+* configured SSH key-based authentication
+* passwordless sudo on remote machines
+	Note: On remote machines execute ``sudo visudo`` and append the following line to enable passwordless sudo on account.
+	```
+	<user> ALL=(ALL) NOPASSWD:ALL
+	```
 
 ## Directory Structure
 
 ```
-quiz23
+quiz31
 	files/
-		db.sql
-		index.html
-		jpcabral-tip.conf
-		todo_list.php
+		c-vsftpd.conf
+		u-vsftpd.conf
 	roles/
-		copyphp/
+		configurevsftpcentos/
 			defaults/
 				main.yml
 			files/
@@ -307,7 +356,7 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		createdbusermysql/
+		configurevsftpdubuntu/
 			defaults/
 				main.yml
 			files/
@@ -324,7 +373,7 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		createdbmysql/
+		installpackagecentos/
 			defaults/
 				main.yml
 			files/
@@ -341,7 +390,7 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		createvirtualhost/
+		installpackageubuntu/
 			defaults/
 				main.yml
 			files/
@@ -358,7 +407,7 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		installpackages/
+		stopfirewallcentos/
 			defaults/
 				main.yml
 			files/
@@ -375,7 +424,7 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		pipinstall/
+		stopfirewallubuntu/
 			defaults/
 				main.yml
 			files/
@@ -392,50 +441,31 @@ quiz23
 			vars/
 				main.yml
 			README.md
-		startservice/
-			defaults/
-				main.yml
-			files/
-			handlers/
-				main.yml
-			meta/
-				main.yml
-			tasks/
-				main.yml
-			templates/
-			tests/
-				inventory
-				test.yml
-			vars/
-				main.yml
-			README.md
-	vars/
-		db_config_vars.yaml*
+		
 ansible.cfg
 inventory
 playbook.yaml
-private.key*
-.gitignore
+config.yaml
 README.md
 ```
 
-Note: Files marked with asterisk (*) at the end are declared inside ``.gitignore``.
+## Declaring Values for Variables
+Inside the ``config.yaml`` file are the variables used in the playbook (imported for the roles). Redeclare the values for each variable in the following format.
 
-## Content Structure for Files Declared in .gitgnore
-* ``private.key``
-	The localmachine generated SSH private key (named ``id_rsa`` by default inside ``~/.ssh/``
-* ``vars/db_config_vars.yaml``
-	```
-	db_host: <database IP>
-	db_user: <database user>
-	db_pass: <database user password>
-	```
-{% endhighlight %}
-<br>
+```
+name: <ftpuser>
+password: <hashed_password_for_ftp_user_generated_using_mkpasswd>
+user_comment: <comments_for_ftp_user>
+ubuntu_vsftpd: <vsftpd.conf file dedicated for ubuntu machines (if at least one target is Ubuntu)>
+centos_vsftpd: <vsftpd.conf file dedicated for centos machines (if at least one target is CentOS)>
+```
 
-Execute using the following command to run the playbook:
-{% highlight bash %}
-localhost:~/1811023/quiz31# ansible-playbook playbook.yaml
+## Executing the Playbook
+Execute 	``playbook.yaml`` using the command:
+
+```
+$ ansible-playbook playbook.yaml
+```
 {% endhighlight %}
 <br>
 
