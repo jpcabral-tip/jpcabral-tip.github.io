@@ -51,12 +51,14 @@ Ubuntu VM,IP is 192.168.122.125 and hostname should be ubuntu-(your student numb
 inventory = ./inventory
 remote_user = jpcabral-tip
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity3/inventory
 {% highlight cfg %}
 [ubuntu]
 192.168.254.115
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity3/COPY_THIS_FILE
 {% highlight cfg %}
@@ -94,6 +96,7 @@ uid=1000(jpcabral-tip) gid=1000(jpcabral-tip) groups=1000(jpcabral-tip),4(adm),2
     "uid": 1000
 }
 {% endhighlight %}
+<br>
 
 Execute via Ansible Adhoc using the following command:
 {% highlight bash %}

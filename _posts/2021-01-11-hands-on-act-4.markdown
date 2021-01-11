@@ -46,8 +46,9 @@ become_method = sudo
 become_user = root
 become_ask_pass = False
 {% endhighlight %}
+<br>
 
-> jpcabral-tip/activity4/inventory.cfg
+> jpcabral-tip/activity4/inventory
 {% highlight cfg %}
 [ubuntu]
 192.168.254.115
@@ -55,6 +56,7 @@ become_ask_pass = False
 [centos]
 192.168.254.116
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity4/playbook.yaml
 {% highlight yaml %}
@@ -92,6 +94,7 @@ become_ask_pass = False
           - boto
           - python-openstackclient
 {% endhighlight %}
+<br>
 
 
 Execute using the following command to run the playbook:

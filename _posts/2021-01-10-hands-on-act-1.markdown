@@ -24,6 +24,7 @@ localhost:~# apk add bash
 localhost:~# apk add vim
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-1.png)
+<br>
 
 2) Install git.
 
@@ -31,6 +32,7 @@ localhost:~# apk add vim
 localhost:~# apk add git
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-2.png)
+<br>
 
 3) Create activity1 directory.
 
@@ -38,6 +40,7 @@ localhost:~# apk add git
 localhost:~# mkdir activity1
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-3.png)
+<br>
 
 4) Initialize activity1 as git repository.
 
@@ -46,6 +49,7 @@ localhost:~# cd activity1/
 localhost:~/activity1# git init
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-4.png)
+<br>
 
 5) Created and added README.md.
 
@@ -53,6 +57,7 @@ localhost:~/activity1# git init
 localhost:~/activity1# git add README.md
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-5.png)
+<br>
 
 6) Commit README.md on the master branch.
 
@@ -60,3 +65,4 @@ localhost:~/activity1# git add README.md
 localhost:~/activity1# git commit -m "First Commit"
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-1-6.png)
+<br>

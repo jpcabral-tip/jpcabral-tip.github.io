@@ -33,12 +33,14 @@ become_user = root
 become_ask_pass = False
 # NOTE: Configure remote host/s to allow remote_user to execute sudo withoout password using sudo visudo. Append `<remote_user> ALL=(ALL) NOPASSWD:ALL`
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/inventory
 {% highlight cfg %}
 [ubuntu]
 192.168.254.135
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/copyphp/tasks/main.yml
 {% highlight yaml %}
@@ -59,6 +61,7 @@ become_ask_pass = False
     state: restarted
   when: phpfile.changed
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/createdbmysql/tasks/main.yml
 {% highlight yaml %}
@@ -91,6 +94,7 @@ become_ask_pass = False
     target: "~/{{ db_sql }}"
   when: sqlFile.changed
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/createdbusermysql/tasks/main.yml
 {% highlight yaml %}
@@ -152,6 +156,7 @@ become_ask_pass = False
     state: restarted
   when: fileregister.changed
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/installpackages/tasks/main.yml
 {% highlight yaml %}
@@ -163,6 +168,7 @@ become_ask_pass = False
     state: latest
     update_cache: yes
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/pipinstall/tasks/main.yml
 {% highlight yaml %}
@@ -173,6 +179,7 @@ become_ask_pass = False
     name: "{{ pippackage }}"
 © 2021 GitHub, Inc.
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/roles/startservice/tasks/main.yml
 {% highlight yaml %}
@@ -184,6 +191,7 @@ become_ask_pass = False
     state: started
     enabled: yes
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/playbook.yaml
 {% highlight yaml %}
@@ -274,6 +282,7 @@ become_ask_pass = False
         owner: jpcabral-tip
         group: jpcabral-tip
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/files/db.sql
 {% highlight mysql %}
@@ -308,6 +317,7 @@ INSERT INTO example_database.todo_list(content) VALUES("and this one more thing"
 	</body>
 </html>
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/files/jpcabral-tip.conf
 {% highlight apache %}
@@ -319,6 +329,7 @@ INSERT INTO example_database.todo_list(content) VALUES("and this one more thing"
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/files/todo_list.php
 {% highlight php %}
@@ -340,6 +351,7 @@ try {
 	die();
 }
 {% endhighlight %}
+<br>
 
 > 1811023/quiz23/README.md
 {% highlight html %}
@@ -509,10 +521,12 @@ Note: Files marked with asterisk (*) at the end are declared inside ``.gitignore
 	db_pass: <database user password>
 	```
 {% endhighlight %}
+<br>
 
 Execute using the following command to run the playbook:
 {% highlight bash %}
 localhost:~/1811023/quiz23# ansible-playbook playbook.yaml
 {% endhighlight %}
+<br>
 
 <p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz23">Github</a>.</p>

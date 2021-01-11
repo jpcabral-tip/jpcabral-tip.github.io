@@ -46,8 +46,9 @@ become_method = sudo
 become_user = root
 become_ask_pass = False
 {% endhighlight %}
+<br>
 
-> jpcabral-tip/activity5/inventory.cfg
+> jpcabral-tip/activity5/inventory
 {% highlight cfg %}
 [ubuntu]
 192.168.254.115
@@ -55,6 +56,7 @@ become_ask_pass = False
 [centos]
 192.168.254.116
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity5/playbook.yaml
 {% highlight yaml+jinja %}
@@ -94,6 +96,7 @@ become_ask_pass = False
           - boto
           - python-openstackclient
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity5/roles/installpackages-centos/tasks/main.yml
 {% highlight yaml+jinja %}
@@ -105,6 +108,7 @@ become_ask_pass = False
     state: present
     update_cache: yes
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity5/roles/installpackages-ubuntu/tasks/main.yml
 {% highlight yaml+jinja %}
@@ -116,6 +120,7 @@ become_ask_pass = False
     state: present
     update_cache: yes
 {% endhighlight %}
+<br>
 
 > jpcabral-tip/activity5/roles/pipinstall/tasks/main.yml
 {% highlight yaml+jinja %}
@@ -125,10 +130,12 @@ become_ask_pass = False
   pip:
     name: "{{ pippackages }}"
 {% endhighlight %}
+<br>
 
 Execute using the following command to run the playbook:
 {% highlight bash %}
 localhost:~/jpcabral-tip/activity5# ansible-playbook playbook.yaml
 {% endhighlight %}
+<br>
 
 <p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity5">Github</a>.</p>

@@ -88,6 +88,7 @@ The following steps show how to create a baisc Ansible configuration and invento
 	root@localhost:~# ansible backend -m shell -a "ip addr"
 	```
 {% endhighlight %}
+<br>
 
 
 <p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/quiz21">Github</a>.</p>

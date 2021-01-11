@@ -34,6 +34,7 @@ tags:   [Prelim, Exam]
 motd: "Comment this line to change to default motd"
 user: "sample"
 {% endhighlight %}
+<br>
 
 > 1811023/prelim-exam/roles/changemotd/tasks/main.yml
 {% highlight yaml+jinja %}
@@ -55,6 +56,7 @@ user: "sample"
   #ALTERNATIVE
   #shell: "chmod -x /etc/update-motd.d/*"
 {% endhighlight %}
+<br>
 
 > 1811023/prelim-exam/roles/createuser/tasks/main.yml
 {% highlight yaml %}
@@ -77,6 +79,7 @@ user: "sample"
     state: present
     update_cache: yes
 {% endhighlight %}
+<br>
 
 > 1811023/prelim-exam/roles/python/tasks/main.yml
 {% highlight yaml+jinja %}
@@ -124,6 +127,7 @@ user: "sample"
       include_role:
         name: createuser
 {% endhighlight %}
+<br>
 
 > 1811023/prelim-exam/README.md
 {% highlight html %}
@@ -258,6 +262,7 @@ Note: Files marked with asterisk (*) at the end are declared inside ``.gitignore
 	192.168.254.69
 	```
 {% endhighlight %}
+<br>
 
 Execute using the following command to run the playbook:
 {% highlight bash %}

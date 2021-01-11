@@ -20,6 +20,7 @@ This activity showcases how to synchronize or upload a local git repository onli
 1) Create a github account and proceed on creating a profile repository (named as 'username').
 
 ![]({{site.baseurl}}/img/hands-on-2-1.png)
+<br>
 
 2) Clone repository.
 
@@ -28,6 +29,7 @@ localhost:~# git clone https://github.com/jpcabral-tip/jpcabral-tip.git
 localhost:~# cd jpcabral-tip
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-2.png)
+<br>
 
 3) Create README.md inside repository.
 
@@ -35,6 +37,7 @@ localhost:~# cd jpcabral-tip
 localhost:~/jpcabral-tip# touch README.md
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-3.png)
+<br>
 
 4) Modified README.md.
 
@@ -54,6 +57,7 @@ localhost:~/jpcabral-tip# vim README.md
 *<b>Disk: </b>SSD 256 GB, HDD 500 GB
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-4.png)
+<br>
 
 5) Commit and push to remote repository.
 
@@ -63,10 +67,12 @@ localhost:~/jpcabral-tip# git commit -m "First commit"
 localhost:~/jpcabral-tip# git push origin master
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-5.png)
+<br>
 
 6) Forked https://github.com/ajcanlas-tip/sysad2-12021.git repository.
 
 ![]({{site.baseurl}}/img/hands-on-2-6.png)
+<br>
 
 7) Clone forked repository.
 
@@ -76,6 +82,7 @@ localhost:~# git clone https://github.com/jpcabral-tip/sysad2-12021.git
 localhost:~# cd sysad2-12021
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-7.png)
+<br>
 
 8) Created activity2 branch
 
@@ -84,6 +91,7 @@ localhost:~/sysad2-12021# git checkout master
 localhost:~/sysad2-12021# git branch activity2
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-8.png)
+<br>
 
 9) Switched to activity2 branch
 
@@ -92,6 +100,7 @@ localhost:~/sysad2-12021# git checkout activity2
 localhost:~/sysad2-12021# git status
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-9.png)
+<br>
 
 10) Added an upstream repository.
 
@@ -99,6 +108,7 @@ localhost:~/sysad2-12021# git status
 localhost:~/sysad2-12021# git remote add upstream https://github.com/ajcanlas-tip/sysad2-12021.git
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-10.png)
+<br>
 
 11) Copy previous README.md as HA2.md.
 
@@ -111,6 +121,7 @@ localhost:~/sysad2-12021/activity2# cp ~/jpcabral-tip/README.md HA2.md
 localhost:~/sysad2-12021/activity2# ls
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-11.png)
+<br>
 
 12) Push to activity2 branch.
 
@@ -120,13 +131,16 @@ localhost:~/sysad2-12021/activity2# git commit -m "First commit for activity2"
 localhost:~/sysad2-12021/activity2# git push origin activity2
 {% endhighlight %}
 ![]({{site.baseurl}}/img/hands-on-2-12.png)
+<br>
 
 13) Open a pull request for the master branch of the upstream with the activity2 branch.
 
 ![]({{site.baseurl}}/img/hands-on-2-13.png)
+<br>
 
 14) The request can be viewed under the 'Pull requests' tab of the upstream repository.
 
 ![]({{site.baseurl}}/img/hands-on-2-14.png)
+<br>
 
 <p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity2">Github</a>.</p>
