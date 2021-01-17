@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Midterm Directories"
-date:   2021-01-09 18:31:33 +0300
+date:   2021-01-17 18:31:33 +0300
 image:  06.jpg
 tags:   Midterm
 ---
@@ -18,7 +18,6 @@ The following presents an index of the respective blog post on each of the Midte
 <p><a href="https://jpcabral-tip.github.io/hands-on-act-7/">Hands-on Activity 7: Install, configure, and manage enterprise monitoring via Ansible</a></p>
 
 <br>
-<br>
 
 ### Quizzes
 
@@ -32,7 +31,6 @@ The following presents an index of the respective blog post on each of the Midte
 
 <p><a href="https://jpcabral-tip.github.io/quiz43/">Quiz 4.3: Log Monitor</a></p>
 
-<br>
 <br>
 
 ### Major Exam

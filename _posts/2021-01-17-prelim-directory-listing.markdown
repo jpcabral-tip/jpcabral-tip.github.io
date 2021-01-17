@@ -24,7 +24,6 @@ The following presents an index of the respective blog post on each of the Preli
 <p><a href="https://jpcabral-tip.github.io/hands-on-act-5/">Hands-on Activity 5: Implement Ansible roles in playbooks</a></p>
 
 <br>
-<br>
 
 ### Quizzes
 
@@ -36,7 +35,6 @@ The following presents an index of the respective blog post on each of the Preli
 
 <p><a href="https://jpcabral-tip.github.io/quiz23/">Quiz 2.3: Ansible Roles</a></p>
 
-<br>
 <br>
 
 ### Major Exam
