@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quiz 2.3. Ansible Roles"
+title:  "Quiz 2.3: Ansible Roles"
 date:   2021-01-11 1:30:00 +0300
 image:  quiz-23-banner.png
 tags:   [Prelim, Quiz]

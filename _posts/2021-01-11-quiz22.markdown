@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quiz 2.2. Ansible Playbooks"
+title:  "Quiz 2.2: Ansible Playbooks"
 date:   2021-01-11 1:20:00 +0300
 image:  quiz-22-banner.png
 tags:   [Prelim, Quiz]
