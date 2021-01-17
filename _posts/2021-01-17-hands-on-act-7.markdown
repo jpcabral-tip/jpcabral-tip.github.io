@@ -6,6 +6,7 @@ image:  hands-on-act-7-banner.png
 tags:   [Midterm, Hands-on Activity]
 ---
 The activity showcases the use of Ansible playbook to automate the installation and configuration of enterprise monitoring tools. Specifically, the playbook demos the installation and configuration of ELK stack, Nagios, and Grafana+Prometheus; intended for both Ubuntu 20.04 LTS and CentOS 8.
+
 ***
 
 ## Objectives
