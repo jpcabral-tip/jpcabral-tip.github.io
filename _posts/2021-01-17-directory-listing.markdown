@@ -1,11 +1,15 @@
 ---
 layout: post
-title:  "Index - List of Deliverables"
+title:  "Welcome to My CPE 232 - Managing Enterprise Servers Portfolio!"
 date:   2021-01-17 18:40:33 +0300
 image:  11.jpg
 tags:   Welcome
 ---
+This is a portfolio/blog page dedicated to share various activities regarding installation and configuration of some of the common tech stack used and deployed on enterprise servers. Mainly, the activities that can be seen in this page revolves around automation with Ansible through the use of playbooks.
+
 The following presents an index of the respective blog posts on each of the deliverables for the CPE 232 - Managing Enterprise Servers course.
+
+<p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021">Github</a>.</p>
 
 ***
 
