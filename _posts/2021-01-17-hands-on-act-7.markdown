@@ -31,7 +31,7 @@ The activity showcases the use of Ansible playbook to automate the installation 
 
 <p>As seen on <a href="https://github.com/jpcabral-tip/sysad2-12021/tree/activity7">Github</a>.</p>
 
-{% highlight %}
+{% highlight cfg %}
 activity7
 ├── ansible.cfg
 ├── config.yaml
