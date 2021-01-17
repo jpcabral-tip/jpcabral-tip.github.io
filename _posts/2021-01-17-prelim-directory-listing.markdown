@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Prelim Directories"
-date:   2021-01-09 23:30:33 +0300
-image:  11.jpg
+date:   2021-01-17 18:30:33 +0300
+image:  06.jpg
 tags:   Prelim
 ---
-The following presents an index of the respective blog post on each Prelim deliverables.
+The following presents an index of the respective blog post on each of the Prelim deliverables.
 
 ***
 
